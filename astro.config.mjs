@@ -8,7 +8,14 @@ const isDev = process.env.NODE_ENV === 'development';
 export default defineConfig({
   site: "http://localhost:4321",
   compressHTML: !isDev,
-  
+  i18n: {
+    locales: ['tr', 'en'],
+    defaultLocale: 'tr',
+    routing: {
+      redirectToDefaultLocale: true,
+      prefixDefaultLocale: true,
+    },
+  },
   integrations: [sitemap()],
 
   vite: {
