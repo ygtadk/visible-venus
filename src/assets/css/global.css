@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-source-code-pro: 'Source Code Pro', monospace;
+}
+
+@utility bg-dark-gradient {
+  background: #262626;
+  background: radial-gradient(circle,
+      rgba(38, 38, 38, 1) 0%,
+      rgba(34, 34, 34, 1) 60%,
+      rgba(20, 20, 20, 1) 100%);
+}
+
+@utility bg-light-gradient {
+  background: #ffffff ;
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(250, 250, 250, 1) 60%,
+      rgba(230, 230, 230, 1) 100%);
+}
