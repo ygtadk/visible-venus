@@ -1,0 +1,17 @@
+{
+    "short_name": "Limo",
+    "name": "Limo Bilişim ve Teknoloji Hizmetleri",
+    "description": "Limo Bilişim ve Teknoloji Hizmetleri resmi web uygulaması.",
+    "icons": [
+        {
+        "src": "/icons/favicon.svg",
+        "type": "image/svg+xml",
+        "sizes": "any"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
+}
