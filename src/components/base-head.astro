@@ -1,22 +1,41 @@
 ---
-const { title, description } = Astro.props;
-import { siteName, siteDescription, siteThemes } from "../data/siteprops";
+import { siteThemes } from "../data/siteprops";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const { title, description } = Astro.props;
 const SiteProps = {
-  name: siteName,
-  description: siteDescription,
-  theme_color: siteThemes.default.themeColor,
+  themeColor: siteThemes.default.themeColor,
 };
 ---
+
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{title || SiteProps.name}</title>
-<meta name="description" content={description || SiteProps.description} />
+<meta
+  name="robots"
+  content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+/>
+<link rel="canonical" href="https://limo.com/" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1 shrink-to-fit=no"
+/>
+<title>{title || t("site.name")}</title>
+<meta name="description" content={description || t("site.description")} />
 <meta name="generator" content={Astro.generator} />
 
-<meta property="og:title" content="" />
-<meta property="og:type" content="" />
-<meta property="og:url" content="" />
+<meta
+  property="og:title"
+  content="Limo Bilişim ve Teknoloji Hizmetleri | Hızlı ve güvenilir çözümler."
+/>
+<meta property="og:site_name" content={t("site.name")} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://limo.com/" />
 <meta property="og:image" content="" />
 <meta property="og:image:alt" content="" />
 
@@ -24,8 +43,11 @@ const SiteProps = {
 
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<meta name="theme-color" content={SiteProps.theme_color} />
+<meta name="theme-color" content={SiteProps.themeColor} />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+  rel="stylesheet"
+/>
