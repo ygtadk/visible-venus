@@ -3,7 +3,8 @@ import BaseLayout from "../layouts/base-layout.astro";
 ---
 
 <BaseLayout>
-  <div class="loader">
+  <!-- Yükleme Animasyonu -->
+  <!-- <div class="loader">
     <div class="inner one"></div>
     <div class="inner two"></div>
     <div class="inner three"></div>
@@ -78,5 +79,16 @@ import BaseLayout from "../layouts/base-layout.astro";
         transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
       }
     }
-  </style>
+  </style> -->
+  <script type="text/javascript">
+    var userLang = navigator.language || navigator.userLanguage;
+    console.log("Kullanıcı dili: " + userLang);
+      if (userLang.startsWith("tr")) {
+        console.log("Türkçe versiyona yönlendiriliyor");
+        window.location.href = "/tr/";
+      } else {
+        console.log("Redirecting to English version");
+        window.location.href = "/en/";
+      }
+  </script>
 </BaseLayout>
