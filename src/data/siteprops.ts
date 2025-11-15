@@ -1,9 +1,10 @@
-export const siteShortName = 'Limo';
-export const siteName = 'Limo Bilişim ve Teknoloji Hizmetleri';
-export const siteDescription = 'Limo Bilişim ve Teknoloji Hizmetleri resmi web sitesi.';
 export const siteThemes = {
     default: {
-        themeColor: '#ffffff',
+        themeColor: "#05df72", //#05df72
+        backgroundColor: "bg-neutral-900", //#171717
+        textColor: "text-green-400", //#05df72
+        compColor:"bg-green-400",
+        radius: "rounded-[18px]",
     }
 }
 export const siteUrl = 'https://limo.com.tr';
