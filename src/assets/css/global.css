@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+/* Preline UI */
+@source "../../../node_modules/preline/dist/*.js";
+@import "../../../node_modules/preline/variants.css";
+
+/* Plugins */
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/aspect-ratio";
+
 @theme {
   --font-inter: 'Inter', sans-serif;
   --font-source-code-pro: 'Source Code Pro', monospace;
+  --font-comfortaa: 'Comfortaa', cursive;
 }
 
 @utility bg-dark-gradient {
@@ -14,7 +23,7 @@
 }
 
 @utility bg-light-gradient {
-  background: #ffffff ;
+  background: #ffffff;
   background: radial-gradient(circle,
       rgba(255, 255, 255, 1) 0%,
       rgba(250, 250, 250, 1) 60%,
