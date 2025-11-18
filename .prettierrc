@@ -3,6 +3,9 @@
   "bracketSameLine": true,
   "singleQuote": false,
   "singleAttributePerLine": false,
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "useTabs": false,
   "tabWidth": 2,
-  "trailingComma": "all"
+  "printWidth": 500
 }
