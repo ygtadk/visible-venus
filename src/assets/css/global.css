@@ -14,6 +14,11 @@
   --font-comfortaa: 'Comfortaa', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 @utility bg-dark-gradient {
   background: #262626;
   background: radial-gradient(circle,
