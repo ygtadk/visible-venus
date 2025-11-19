@@ -6,14 +6,13 @@ const { title, description, lang, bodyClass } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang || "tr"}>
+<html lang={lang || "tr"} class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-<head>
-  <BaseHead title={title} description={description}/>
-</head>
-
-<body class={ bodyClass || "" }>
-  <slot />
-</body>
-
+  <body class={"font-inter bg-neutral-900" + (bodyClass ? ` ${bodyClass}` : "")}>
+    <slot />
+    <script is:inline src="/node_modules/preline/dist/preline.js"></script>
+  </body>
 </html>

@@ -1,0 +1,79 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<!-- Testimonials Component -->
+<div class="bg-black">
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:py-20 xl:px-0">
+    <!-- Title -->
+    <div class="mb-10 max-w-3xl lg:mb-14">
+      <h2 class="text-2xl font-semibold text-white md:text-4xl md:leading-tight">limo reviews</h2>
+      <p class="mt-1 text-neutral-400">With over 30 awards, and achievements, we proudly demonstrate our unwavering dedication to excellence and client success.</p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Grid -->
+    <div class="py-3 md:grid md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
+      <div>
+        <!-- Blockquote -->
+        <blockquote>
+          <p class="text-xl font-medium text-white md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">To say that switching to Preline has been life-changing is an understatement. My business has tripled since then.</p>
+
+          <footer class="mt-6">
+            <div class="flex items-center">
+              <div class="shrink-0 md:hidden">
+                <img class="size-12 rounded-full" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=320&h=320&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
+              </div>
+              <div class="ms-4 md:ms-0">
+                <div class="text-base font-semibold text-white">Nicole Grazioso</div>
+                <div class="text-xs text-neutral-400">Director Payments & Risk | Airbnb</div>
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+        <!-- End Blockquote -->
+      </div>
+      <!-- End Col -->
+
+      <div class="mb-24 hidden md:mb-0 md:block">
+        <img class="rounded-xl" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Grid -->
+    <!-- Grid -->
+    <div class="py-3 md:grid md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
+      <!-- End Col -->
+
+      <div class="mb-24 hidden md:mb-0 md:block">
+        <img class="rounded-xl" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
+      </div>
+      <!-- End Col -->
+      <div>
+        <!-- Blockquote -->
+        <blockquote>
+          <p class="text-xl font-medium text-white md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">To say that switching to Preline has been life-changing is an understatement. My business has tripled since then.</p>
+
+          <footer class="mt-6">
+            <div class="flex items-center">
+              <div class="shrink-0 md:hidden">
+                <img class="size-12 rounded-full" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=320&h=320&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
+              </div>
+              <div class="ms-4 md:ms-0">
+                <div class="text-base font-semibold text-white">Nicole Grazioso</div>
+                <div class="text-xs text-neutral-400">Director Payments & Risk | Airbnb</div>
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+        <!-- End Blockquote -->
+      </div>
+    </div>
+    <!-- End Grid -->
+  </div>
+</div>
+<!-- End Testimonials Component -->

@@ -1,0 +1,136 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<!-- Contact Component -->
+<div id="contact" class="bg-neutral-900">
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:py-20 xl:px-0">
+    <!-- Title -->
+    <div class="mb-10 max-w-3xl lg:mb-14">
+      <h2 class="text-2xl font-semibold text-white md:text-4xl md:leading-tight">Contact us</h2>
+      <p class="mt-1 text-neutral-400">Whatever your goal - we will get you there.</p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 gap-x-10 md:grid-cols-2 lg:gap-x-16">
+      <div class="mb-10 border-b border-neutral-800 pb-10 md:order-2 md:mb-0 md:border-b-0 md:pb-0">
+        <form>
+          <div class="space-y-4">
+            <!-- Input -->
+            <div class="relative">
+              <input type="text" id="hs-tac-input-name" class="peer block w-full rounded-lg border-transparent bg-neutral-800 p-3 text-white not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 placeholder:text-transparent autofill:pt-6 autofill:pb-2 focus:border-transparent focus:pt-6 focus:pb-2 focus:ring-0 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 sm:p-4 sm:text-sm" placeholder="Name" />
+              <label for="hs-tac-input-name" class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-3 text-sm text-neutral-400 transition duration-100 ease-in-out peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-neutral-400 peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-neutral-400 peer-disabled:pointer-events-none peer-disabled:opacity-50 sm:p-4">Name</label>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="relative">
+              <input type="email" id="hs-tac-input-email" class="peer block w-full rounded-lg border-transparent bg-neutral-800 p-3 text-white not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 placeholder:text-transparent autofill:pt-6 autofill:pb-2 focus:border-transparent focus:pt-6 focus:pb-2 focus:ring-0 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 sm:p-4 sm:text-sm" placeholder="Email" />
+              <label for="hs-tac-input-email" class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-3 text-sm text-neutral-400 transition duration-100 ease-in-out peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-neutral-400 peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-neutral-400 peer-disabled:pointer-events-none peer-disabled:opacity-50 sm:p-4">Email</label>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="relative">
+              <input type="text" id="hs-tac-input-company" class="peer block w-full rounded-lg border-transparent bg-neutral-800 p-3 text-white not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 placeholder:text-transparent autofill:pt-6 autofill:pb-2 focus:border-transparent focus:pt-6 focus:pb-2 focus:ring-0 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 sm:p-4 sm:text-sm" placeholder="Company" />
+              <label for="hs-tac-input-company" class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-3 text-sm text-neutral-400 transition duration-100 ease-in-out peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-neutral-400 peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-neutral-400 peer-disabled:pointer-events-none peer-disabled:opacity-50 sm:p-4">Company</label>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="relative">
+              <input type="text" id="hs-tac-input-phone" class="peer block w-full rounded-lg border-transparent bg-neutral-800 p-3 text-white not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 placeholder:text-transparent autofill:pt-6 autofill:pb-2 focus:border-transparent focus:pt-6 focus:pb-2 focus:ring-0 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 sm:p-4 sm:text-sm" placeholder="Phone" />
+              <label for="hs-tac-input-phone" class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-3 text-sm text-neutral-400 transition duration-100 ease-in-out peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-neutral-400 peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-neutral-400 peer-disabled:pointer-events-none peer-disabled:opacity-50 sm:p-4">Phone</label>
+            </div>
+            <!-- End Input -->
+
+            <!-- Textarea -->
+            <div class="relative">
+              <textarea id="hs-tac-message" class="peer block w-full rounded-lg border-transparent bg-neutral-800 p-3 text-white not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 placeholder:text-transparent autofill:pt-6 autofill:pb-2 focus:border-transparent focus:pt-6 focus:pb-2 focus:ring-0 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 sm:p-4 sm:text-sm" placeholder="This is a textarea placeholder" data-hs-textarea-auto-height></textarea>
+              <label for="hs-tac-message" class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-3 text-sm text-neutral-400 transition duration-100 ease-in-out peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-neutral-400 peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-neutral-400 peer-disabled:pointer-events-none peer-disabled:opacity-50 sm:p-4">Tell us about your project</label>
+            </div>
+            <!-- End Textarea -->
+          </div>
+
+          <div class="mt-2">
+            <p class="text-xs text-neutral-500">All fields are required</p>
+
+            <p class="mt-5">
+              <a class="group inline-flex items-center gap-x-2 rounded-full bg-green-400 px-3 py-2 text-sm font-medium text-neutral-800 focus:outline-hidden" href="#">
+                Submit
+                <svg class="size-4 shrink-0 transition group-hover:translate-x-0.5 group-focus:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <!-- End Col -->
+
+      <div class="space-y-14">
+        <!-- Item -->
+        <div class="flex gap-x-5">
+          <svg class="size-6 shrink-0 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <div class="grow">
+            <h4 class="font-semibold text-white">Our address:</h4>
+
+            <address class="mt-1 text-sm text-neutral-400 not-italic">
+              300 Bath Street, Tay House<br />
+              Glasgow G2 4JR, United Kingdom
+            </address>
+          </div>
+        </div>
+        <!-- End Item -->
+
+        <!-- Item -->
+        <div class="flex gap-x-5">
+          <svg class="size-6 shrink-0 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"></path>
+            <path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"></path>
+          </svg>
+          <div class="grow">
+            <h4 class="font-semibold text-white">Email us:</h4>
+
+            <a class="mt-1 text-sm text-neutral-400 hover:text-neutral-200 focus:text-neutral-200 focus:outline-hidden" href="#mailto:example@site.co" target="_blank">hello@example.so</a>
+          </div>
+        </div>
+        <!-- End Item -->
+
+        <!-- Item -->
+        <div class="flex gap-x-5">
+          <svg class="size-6 shrink-0 text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 11 18-5v12L3 14v-3z"></path>
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path>
+          </svg>
+          <div class="grow">
+            <h4 class="font-semibold text-white">We're hiring</h4>
+            <p class="mt-1 text-neutral-400">We're thrilled to announce that we're expanding our team and looking for talented individuals like you to join us.</p>
+            <p class="mt-2">
+              <a class="group inline-flex items-center gap-x-2 text-sm font-medium text-green-400 decoration-2 hover:underline focus:underline focus:outline-hidden" href="#">
+                Job openings
+                <svg class="size-4 shrink-0 transition group-hover:translate-x-0.5 group-focus:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </p>
+          </div>
+        </div>
+        <!-- End Item -->
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Grid -->
+  </div>
+</div>
+<!-- End Contact Component -->

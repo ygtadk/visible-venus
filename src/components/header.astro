@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const headerLinks = [
+  { href: translatePath("/#services"), label: t("nav.services") },
+  { href: translatePath("/#projects"), label: t("nav.projects") },
+  { href: translatePath("/about/"), label: t("nav.about") },
+];
+---
+
+<!-- Header Component -->
+<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap before:absolute before:inset-0 before:mx-2 before:rounded-[26px] before:bg-neutral-800/30 before:backdrop-blur-md md:flex-nowrap md:justify-start lg:before:mx-auto before:max-w-7xl">
+  <nav class="relative mx-auto flex w-full max-w-7xl basis-full flex-wrap items-center justify-between py-2 ps-5 pe-2 md:flex-nowrap md:py-0">
+    <div class="flex items-center">
+      <!-- Logo -->
+      <a class="inline-block flex-none rounded-md text-xl font-semibold focus:opacity-80 focus:outline-hidden" href={translatePath("/")} aria-label="Limo" aria-current="page">
+        <span class="font-comfortaa h-auto w-28 text-3xl font-bold text-green-400 lowercase">{t("site.shortname")}</span>
+      </a>
+      <!-- End Logo -->
+    </div>
+
+    <!-- Button Group -->
+    <div class="flex items-center gap-x-3 md:order-3">
+      <div class="md:ps-3">
+        <a class="group inline-flex items-center gap-x-2 rounded-full bg-green-400 px-3 py-2 text-sm font-medium text-nowrap text-neutral-800 focus:outline-hidden" href={translatePath("/contact/")}>
+          {t("nav.get_in_touch")}
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button type="button" class="hs-collapse-toggle flex size-9 items-center justify-center rounded-full bg-neutral-800 text-sm font-semibold text-white disabled:pointer-events-none disabled:opacity-50" id="hs-navbar-floating-dark-collapse" aria-expanded="false" aria-controls="hs-navbar-floating-dark" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-floating-dark">
+          <svg class="hs-collapse-open:hidden size-4 shrink-0 text-green-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" x2="21" y1="6" y2="6"></line>
+            <line x1="3" x2="21" y1="12" y2="12"></line>
+            <line x1="3" x2="21" y1="18" y2="18"></line>
+          </svg>
+          <svg class="hs-collapse-open:block hidden size-4 shrink-0 text-green-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- End Button Group -->
+
+    <!-- Collapse -->
+    <!-- TODO: Menünün düzeni değiştirilecek -->
+    <div id="hs-navbar-floating-dark" class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block" aria-labelledby="hs-navbar-floating-dark-collapse">
+      <div class="flex flex-col gap-y-3 py-2 md:flex-row md:items-center md:justify-end md:py-0 md:ps-7">
+        {
+          headerLinks.map((link) => (
+            <a class="ps-px pe-3 text-sm text-white transition duration-300 hover:text-green-400 focus:text-neutral-300 focus:outline-hidden sm:px-3 md:py-4" href={link.href}>
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <!-- End Collapse -->
+  </nav>
+</header>
+<!-- End Header Component -->
