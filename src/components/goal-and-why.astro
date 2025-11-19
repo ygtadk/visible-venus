@@ -1,0 +1,86 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="bg-neutral-900 py-24">
+  <div class="mx-auto max-w-7xl px-4 xl:px-0">
+    <!-- Arrow Animation Container -->
+    <div class="mb-24 flex justify-center">
+      <svg id="scroll-arrow" width="60" height="150" viewBox="0 0 60 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="stroke-green-400 stroke-3">
+        <path d="M30 0 V140 M30 140 L10 110 M30 140 L50 110" class="arrow-path" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+      <!-- Goal Section -->
+      <div class="scroll-text-reveal-container">
+        <h2 class="mb-6 text-sm font-bold tracking-widest text-green-400 uppercase">{t("goal.title")}</h2>
+        <p class="reveal-text text-3xl leading-tight font-bold md:text-5xl">
+          {t("goal.text")}
+        </p>
+      </div>
+
+      <!-- Why Us Section -->
+      <div class="scroll-text-reveal-container lg:mt-32">
+        <h2 class="mb-6 text-sm font-bold tracking-widest text-green-400 uppercase">{t("why.title")}</h2>
+        <p class="reveal-text text-3xl leading-tight font-bold md:text-5xl">
+          {t("why.text")}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reveal-text {
+    background-image: linear-gradient(180deg, #ffffff 50%, #404040 50%);
+    background-size: 100% 300%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Arrow Animation
+  const arrowPath = document.querySelector(".arrow-path");
+  if (arrowPath) {
+    const length = (arrowPath as SVGPathElement).getTotalLength();
+    gsap.set(arrowPath, { strokeDasharray: length, strokeDashoffset: length });
+
+    gsap.to(arrowPath, {
+      strokeDashoffset: 0,
+      duration: 3,
+      scrollTrigger: {
+        trigger: "#scroll-arrow",
+        start: "top 50%",
+        end: "bottom 10%",
+        scrub: 1,
+      },
+    });
+  }
+
+  // Text Reveal Animation
+  const revealTexts = document.querySelectorAll(".reveal-text");
+  revealTexts.forEach((text) => {
+    gsap.to(text, {
+      backgroundPosition: "0% 0",
+      ease: "none",
+      scrollTrigger: {
+        trigger: text,
+        start: "top 85%",
+        end: "bottom 45%",
+        scrub: 1,
+      },
+    });
+  });
+</script>

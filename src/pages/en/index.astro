@@ -1,13 +1,16 @@
 ---
 import BaseLayout from "../../layouts/base-layout.astro";
+import AB from "../../components/ab.astro";
 import Header from "../../components/header.astro";
 import Hero from "../../components/hero.astro";
 import Services from "../../components/services.astro";
+import GoalAndWhy from "../../components/goal-and-why.astro";
+import Projects from "../../components/projects.astro";
 import Clients from "../../components/clients.astro";
-import Stories from "../../components/stories.astro";
 import Testimonials from "../../components/testimonials.astro";
 import Contacts from "../../components/contact.astro";
 import Footer from "../../components/footer.astro";
+import Cookies from "../../components/cookies.astro";
 
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../../i18n/utils";
 
@@ -17,16 +20,18 @@ const translatePath = useTranslatedPath(lang);
 ---
 
 <BaseLayout lang={lang} title={t("site.shortname")} description={t("site.description")} bodyClass="overflow-x-hidden mx-auto">
+  <AB />
   <Header />
-
   <main id="content">
     <Hero />
     <div id="learn-more"></div>
     <Services />
-    <Stories />
+    <GoalAndWhy />
+    <Projects />
+    <Clients />
     <Testimonials />
     <Contacts />
-    <Clients />
   </main>
   <Footer />
+  <Cookies />
 </BaseLayout>
