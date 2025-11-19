@@ -3,22 +3,28 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
+import cloudflare from "@astrojs/cloudflare";
+
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-    site: "http://localhost:4321",
-    compressHTML: !isDev,
-    i18n: {
-        locales: ["tr", "en"],
-        defaultLocale: "tr",
-        routing: {
-            redirectToDefaultLocale: false,
-            prefixDefaultLocale: true,
-        },
-    },
-    integrations: [sitemap()],
+  site: "http://localhost:4321",
+  compressHTML: !isDev,
 
-    vite: {
-        plugins: [tailwindcss()],
-    },
+  i18n: {
+      locales: ["tr", "en"],
+      defaultLocale: "tr",
+      routing: {
+          redirectToDefaultLocale: false,
+          prefixDefaultLocale: true,
+      },
+  },
+
+  integrations: [sitemap()],
+
+  vite: {
+      plugins: [tailwindcss()],
+  },
+
+  adapter: cloudflare(),
 });
