@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="Gizlilik Politikası | Limo" description="Limo Bilişim ve Teknoloji Hizmetleri Gizlilik Politikası ve Çerez Kullanımı hakkında bilgiler." bodyClass="overflow-x-hidden mx-auto">
+  <Header />
+
+  <main id="content" class="pt-24 pb-12">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-xl md:p-12">
+        <h1 class="mb-8 text-3xl font-bold text-white md:text-4xl">Gizlilik Politikası</h1>
+
+        <div class="space-y-8 leading-relaxed text-neutral-300">
+          <section>
+            <p>Limo Bilişim ve Teknoloji Hizmetleri ("Limo", "biz", "bizi" veya "bizim") olarak, web sitemizi ziyaret edenlerin gizliliğini korumayı taahhüt ediyoruz. Bu Gizlilik Politikası, kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.</p>
+            <p class="mt-4">Hizmetlerimizi kullanarak, bu politikada belirtilen uygulamaları kabul etmiş olursunuz.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">1. Toplanan Bilgiler</h2>
+            <p>Sitemizi ziyaret ettiğinizde veya hizmetlerimizle etkileşimde bulunduğunuzda aşağıdaki türde bilgileri toplayabiliriz:</p>
+            <ul class="mt-2 ml-4 list-inside list-disc space-y-2">
+              <li><strong>Kişisel Bilgiler:</strong> İletişim formlarını doldurduğunuzda adınız, e-posta adresiniz ve telefon numaranız gibi bilgiler.</li>
+              <li><strong>Otomatik Bilgiler:</strong> IP adresiniz, tarayıcı türünüz, işletim sisteminiz ve sitemizdeki gezinme alışkanlıklarınız gibi teknik veriler.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">2. Bilgilerin Kullanımı</h2>
+            <p>Topladığımız bilgileri şu amaçlarla kullanabiliriz:</p>
+            <ul class="mt-2 ml-4 list-inside list-disc space-y-2">
+              <li>Hizmetlerimizi sağlamak ve iyileştirmek.</li>
+              <li>Sizinle iletişime geçmek ve taleplerinizi yanıtlamak.</li>
+              <li>Web sitesi güvenliğini sağlamak ve yasal yükümlülükleri yerine getirmek.</li>
+              <li>Kullanıcı deneyimini kişiselleştirmek.</li>
+            </ul>
+          </section>
+
+          <section id="cookies" class="scroll-mt-32">
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">3. Çerezler (Cookies)</h2>
+            <p>Web sitemizde, deneyiminizi geliştirmek, site trafiğini analiz etmek ve içerikleri kişiselleştirmek için çerezler kullanıyoruz.</p>
+
+            <h3 class="mt-4 mb-2 text-xl font-medium text-white">Çerez Nedir?</h3>
+            <p>Çerezler, web sitemizi ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza kaydedilen küçük metin dosyalarıdır. Bu dosyalar, siteye tekrar girdiğinizde sizi hatırlamamıza ve tercihlerinizi saklamamıza yardımcı olur.</p>
+
+            <h3 class="mt-4 mb-2 text-xl font-medium text-white">Kullandığımız Çerez Türleri</h3>
+            <ul class="mt-2 ml-4 list-inside list-disc space-y-2">
+              <li><strong>Zorunlu Çerezler:</strong> Web sitesinin düzgün çalışması için gerekli olan temel çerezlerdir.</li>
+              <li><strong>Analitik Çerezler:</strong> Ziyaretçilerin siteyi nasıl kullandığını anlamamıza yardımcı olan, anonim veriler toplayan çerezlerdir.</li>
+              <li><strong>İşlevsel Çerezler:</strong> Dil tercihleri gibi site ayarlarınızı hatırlamamızı sağlayan çerezlerdir.</li>
+            </ul>
+
+            <h3 class="mt-4 mb-2 text-xl font-medium text-white">Çerezleri Yönetme</h3>
+            <p>Tarayıcı ayarlarınızı değiştirerek çerezleri dilediğiniz zaman engelleyebilir veya silebilirsiniz. Ancak, çerezleri devre dışı bırakmak sitemizin bazı özelliklerinin düzgün çalışmamasına neden olabilir.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">4. Bilgi Paylaşımı</h2>
+            <p>Kişisel verilerinizi, yasal zorunluluklar haricinde veya izniniz olmadan üçüncü taraflarla satmıyor, kiralamıyor veya paylaşmıyoruz. Hizmet sağlayıcılarımızla (örneğin hosting firmaları) sadece hizmetin gerektirdiği ölçüde veri paylaşımı yapılabilir.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">5. İletişim</h2>
+            <p>Gizlilik politikamızla ilgili sorularınız veya endişeleriniz varsa, lütfen bizimle iletişime geçin:</p>
+            <p class="mt-2">
+              <strong>E-posta:</strong> info@limo.com.tr<br />
+              <strong>Adres:</strong> Köseler, Gültepe Sk. No:51/A, Dilovası, Kocaeli, Türkiye 41455
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

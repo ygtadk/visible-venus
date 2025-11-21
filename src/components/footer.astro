@@ -28,19 +28,35 @@ const translatePath = useTranslatedPath(lang);
   </svg>
 
   <div class="relative z-10">
-    <div class="mx-auto w-full max-w-7xl px-4 py-10 lg:pt-16 xl:px-0">
-      <div class="inline-flex items-center">
-        <!-- Logo -->
-        <span class="font-comfortaa text-3xl font-bold text-green-400">limo</span>
+    <div class="mx-auto max-w-7xl px-4 py-10 lg:px-0 lg:pt-16">
+      <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+        <!-- Left Side: Logo & Company Name -->
+        <div class="flex flex-col items-center gap-4 md:flex-row md:gap-6">
+          <!-- Logo -->
+          <a class="flex gap-2 rounded-md text-xl font-semibold text-green-400 transition duration-500 hover:text-white focus:opacity-80 focus:outline-hidden" href={translatePath("/")} aria-label="Limo" aria-current="page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 14 14">
+              <!-- Icon from Flex free icons by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.734 10.995V9.308c.57.024.855-.029 1.198-.267c.307-.213.409-.614.308-.974c-.982-3.513-2.507-7.062-6.904-7.062v11.99h3.398a2 2 0 0 0 2-2M9.867 6.51v.161M2.922 4.069c.551 0 .862-.31.862-.862s-.31-.863-.862-.863s-.862.31-.862.863s.31.862.862.862m-1.46 4.024c.551 0 .862-.31.862-.862s-.31-.862-.862-.862S.6 6.68.6 7.231s.31.862.862.862m.689 4.024c.552 0 .862-.31.862-.862s-.31-.862-.862-.862s-.862.31-.862.862s.31.862.862.862m1.633-8.911h2.552m-1.54 2.178h1.54m-1.661 5.871v-2H3.579m-.565 2h3.322M2.324 7.23h4.012">
+              </path>
+            </svg>
+            <span class="font-comfortaa h-auto w-28 text-3xl font-bold lowercase">{t("site.shortname")}</span>
+          </a>
 
-        <!-- Company Name -->
-        <div class="ms-5 border-s border-neutral-700 ps-5">
-          <p class="text-sm text-neutral-400">{t("site.name")} © 2025</p>
+          <!-- Company Name -->
+          <div class="text-center md:border-l md:border-neutral-700 md:pl-6 md:text-left">
+            <p class="text-sm text-neutral-400">{t("site.name")} © 2025 {t("footer.arr")}</p>
+          </div>
         </div>
 
-        <!-- Links -->
-        <div class="ps-96">
-          <a href={translatePath("/")} class="text-sm text-neutral-400">Hizmet Koşulları</a>
+        <!-- Right Side: Links -->
+        <div class="flex gap-6">
+          <a href={translatePath("/terms")} class="text-sm text-neutral-400 transition duration-300 hover:text-green-400">{t("footer.terms")}</a>
+          <a href={translatePath("/privacy")} class="text-sm text-neutral-400 transition duration-300 hover:text-green-400">{t("footer.privacy")}</a>
         </div>
       </div>
     </div>

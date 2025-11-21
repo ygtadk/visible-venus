@@ -19,8 +19,8 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<BaseLayout lang={lang} title={t("site.shortname")} description={t("site.description")} bodyClass="overflow-x-hidden mx-auto">
-  <AB />
+<BaseLayout lang={lang} title={t("site.shortname")} description={t("site.description")} bodyClass="overflow-x-hidden mx-auto ">
+  <AB status="off"/> <!-- On/Off  -->
   <Header />
   <main id="content">
     <Hero />
@@ -28,8 +28,8 @@ const translatePath = useTranslatedPath(lang);
     <Services />
     <GoalAndWhy />
     <Projects />
-    <Clients />
     <Testimonials />
+    <Clients />
     <Contacts />
   </main>
   <Footer />

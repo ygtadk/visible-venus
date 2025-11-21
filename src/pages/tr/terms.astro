@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="Kullanım Koşulları | Limo" description="Limo Bilişim ve Teknoloji Hizmetleri Kullanım Koşulları." bodyClass="overflow-x-hidden mx-auto">
+  <Header />
+
+  <main id="content" class="pt-24 pb-12">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-xl md:p-12">
+        <h1 class="mb-8 text-3xl font-bold text-white md:text-4xl">Kullanım Koşulları</h1>
+
+        <div class="space-y-8 leading-relaxed text-neutral-300">
+          <section>
+            <p>Limo Bilişim ve Teknoloji Hizmetleri ("Limo", "biz") web sitesine hoş geldiniz. Bu web sitesini kullanarak, aşağıda belirtilen kullanım koşullarını kabul etmiş sayılırsınız. Eğer bu koşulları kabul etmiyorsanız, lütfen sitemizi kullanmayınız.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">1. Hizmetlerin Kullanımı</h2>
+            <p>Web sitemizi ve hizmetlerimizi sadece yasal amaçlar için ve bu kullanım koşullarına uygun olarak kullanabilirsiniz. Aşağıdaki eylemler kesinlikle yasaktır:</p>
+            <ul class="mt-2 ml-4 list-inside list-disc space-y-2">
+              <li>Sitenin güvenliğini ihlal etmek veya ihlal etmeye teşebbüs etmek.</li>
+              <li>Diğer kullanıcıların hizmet almasını engellemek.</li>
+              <li>Yasa dışı, zararlı veya rahatsız edici içerik paylaşmak.</li>
+              <li>Sitenin altyapısına zarar verecek yazılımlar veya virüsler yüklemek.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">2. Fikri Mülkiyet Hakları</h2>
+            <p>Bu web sitesinde yer alan tüm içerik, tasarım, logolar, grafikler ve yazılımlar Limo Bilişim'e aittir ve telif hakkı yasaları ile korunmaktadır. İzinsiz kopyalanması, çoğaltılması veya dağıtılması yasaktır.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">3. Sorumluluk Reddi</h2>
+            <p>Web sitemizde sunulan bilgiler genel bilgilendirme amaçlıdır. Limo Bilişim, sitedeki bilgilerin doğruluğu, güncelliği veya eksiksizliği konusunda garanti vermez. Sitenin kullanımından doğabilecek doğrudan veya dolaylı zararlardan sorumlu tutulamaz.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">4. Üçüncü Taraf Bağlantıları</h2>
+            <p>Sitemiz, üçüncü taraf web sitelerine bağlantılar içerebilir. Bu bağlantılar sadece kolaylık sağlamak amacıyla sunulmuştur. Bağlantı verilen sitelerin içeriğinden veya gizlilik uygulamalarından Limo Bilişim sorumlu değildir.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">5. Değişiklikler</h2>
+            <p>Limo Bilişim, bu kullanım koşullarını dilediği zaman önceden bildirmeksizin değiştirme hakkını saklı tutar. Değişiklikler sitede yayınlandığı tarihte yürürlüğe girer. Sitemizi düzenli olarak kontrol etmeniz önerilir.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">6. İletişim</h2>
+            <p>Kullanım koşulları ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:</p>
+            <p class="mt-2">
+              <strong>E-posta:</strong> info@limo.com.tr<br />
+              <strong>Adres:</strong> Köseler, Gültepe Sk. No:51/A, Dilovası, Kocaeli, Türkiye 41455
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

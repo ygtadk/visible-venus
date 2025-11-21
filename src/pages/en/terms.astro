@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="Terms of Service | Limo" description="Limo Information and Technology Services Terms of Service." bodyClass="overflow-x-hidden mx-auto">
+  <Header />
+
+  <main id="content" class="pt-24 pb-12">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 shadow-xl md:p-12">
+        <h1 class="mb-8 text-3xl font-bold text-white md:text-4xl">Terms of Service</h1>
+
+        <div class="space-y-8 leading-relaxed text-neutral-300">
+          <section>
+            <p>Limo Information and Technology Services ("Limo", "we") welcomes you to our website. By using this website, you agree to the terms of service outlined below. If you do not agree to these terms, please do not use our site.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">1. Use of Services</h2>
+            <p>You may use our website and services only for lawful purposes and in accordance with these terms of service. The following actions are strictly prohibited:</p>
+            <ul class="mt-2 ml-4 list-inside list-disc space-y-2">
+              <li>Attempting to breach or compromise the security of the site.</li>
+              <li>Interfering with other users' access to services.</li>
+              <li>Sharing illegal, harmful, or offensive content.</li>
+              <li>Uploading software or viruses that could damage the site's infrastructure.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">2. Intellectual Property Rights</h2>
+            <p>All content, design, logos, graphics, and software on this website are the property of Limo Information and Technology Services and are protected by copyright laws. Unauthorized copying, reproduction, or distribution is prohibited.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">3. Disclaimer of Liability</h2>
+            <p>The information provided on our website is for general informational purposes only. Limo Information and Technology Services does not guarantee the accuracy, completeness, or timeliness of the information on the site. We are not responsible for any direct or indirect damages resulting from the use of the site.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">4. Third-Party Links</h2>
+            <p>Our site may contain links to third-party websites. These links are provided solely for your convenience. Limo Information and Technology Services is not responsible for the content or privacy practices of linked sites.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">5. Changes</h2>
+            <p>Limo Information and Technology Services reserves the right to change these terms of service at any time without prior notice. Changes take effect on the date they are posted on the site. We recommend that you regularly check our site for updates.</p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-semibold text-green-400">6. Contact</h2>
+            <p>If you have any questions about the terms of service, you can contact us:</p>
+            <p class="mt-2">
+              <strong>Email:</strong> info@limo.com.tr<br />
+              <strong>Address:</strong> Köseler, Gültepe Sk. No:51/A, Dilovası, Kocaeli, Türkiye 41455
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

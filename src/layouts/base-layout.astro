@@ -12,18 +12,13 @@ const { title, description, lang, bodyClass } = Astro.props;
   </head>
 
   <body class={"font-inter bg-neutral-800" + (bodyClass ? ` ${bodyClass}` : "")}>
-    <div id="cursor-follower" class="pointer-events-none fixed top-0 left-0 hidden h-54 w-54 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/20 blur-[100px] lg:block" style="z-index: 9999;"></div>
-    <slot />
-    <script is:inline src="/node_modules/preline/dist/preline.js"></script>
+    <div class="pointer-events-none fixed inset-0 z-100 mix-blend-overlay" style="background-image: url('/texture.png'); background-repeat: repeat;"></div>
+    
+    <div class="relative z-10">
+      <slot />
+    </div>
     <script>
-      const cursor = document.getElementById("cursor-follower");
-
-      if (cursor) {
-        document.addEventListener("mousemove", (e) => {
-          cursor.style.left = `${e.clientX}px`;
-          cursor.style.top = `${e.clientY}px`;
-        });
-      }
+      import "preline/dist/preline.js";
     </script>
   </body>
 </html>

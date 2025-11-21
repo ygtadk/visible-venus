@@ -1,0 +1,16 @@
+---
+
+---
+
+<div id="cursor-follower" class="pointer-events-none fixed top-0 left-0 hidden h-54 w-54 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/20 blur-[100px] lg:block" style="z-index: 9999;"></div>
+
+<script>
+  const cursor = document.getElementById("cursor-follower");
+
+  if (cursor) {
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+  }
+</script>

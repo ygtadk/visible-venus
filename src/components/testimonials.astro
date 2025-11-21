@@ -3,77 +3,73 @@ import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/util
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
+
+const testimonials = [
+  {
+    quote: "Çok hızlı ve güvenilir bir hizmet sundular. Projemiz zamanında ve bütçe dahilinde tamamlandı.",
+    name: "Nate Higgerson",
+    position: "CTO",
+    company: "Higger Networks",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWw1W8Eb_wk_jz4kS2nerMPf59tqcKRJpEK1RVRIkYBiBew0M63lFJDx3sJJc3AzhgcZc&usqp=CAU",
+  },
+  {
+    quote: "Mükemmel müşteri hizmetleri ve kaliteli ürünler. İşimizi büyütmemize büyük katkı sağladılar.",
+    name: "Sarah Johnson",
+    position: "CEO",
+    company: "Bright Solutions",
+    image: "https://images.pexels.com/photos/3760373/pexels-photo-3760373.jpeg",
+  },
+  {
+    quote: "Profesyonel ve deneyimli bir ekip. Tüm ihtiyaçlarımızı anladılar ve harika çözümler sundular.",
+    name: "Michael Lee",
+    position: "Product Manager",
+    company: "Tech Innovators",
+    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+  },
+  {
+    quote: "Yaratıcı ve etkili çözümlerle iş süreçlerimizi optimize ettiler. Kesinlikle tavsiye ederim.",
+    name: "Emily Davis",
+    position: "Marketing Director",
+    company: "Creative Minds",
+    image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
+  },
+];
 ---
 
 <!-- Testimonials Component -->
 <div class="w-full bg-gradient-to-b from-neutral-900 from-0% via-neutral-800 via-50% to-neutral-900 to-100%">
   <div class="mx-auto max-w-7xl py-10 lg:py-20 xl:px-0">
     <!-- Title -->
-    <div class="mb-10 max-w-3xl lg:mb-14">
-      <h2 class="text-2xl font-semibold text-white md:text-4xl md:leading-tight">limo reviews</h2>
-      <p class="mt-1 text-neutral-400">With over 30 awards, and achievements, we proudly demonstrate our unwavering dedication to excellence and client success.</p>
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <h2 class="text-2xl font-bold text-gray-800 md:text-4xl md:leading-tight dark:text-white">
+        {t("testimonials.title")}
+      </h2>
+      <p class="mt-1 text-gray-600 dark:text-neutral-400">
+        {t("testimonials.subtitle")}
+      </p>
     </div>
     <!-- End Title -->
-
     <!-- Grid -->
-    <div class="py-3 md:grid md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
-      <div>
-        <!-- Blockquote -->
-        <blockquote>
-          <p class="text-xl font-medium text-white md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">To say that switching to Preline has been life-changing is an understatement. My business has tripled since then.</p>
-
-          <footer class="mt-6">
-            <div class="flex items-center">
-              <div class="shrink-0 md:hidden">
-                <img class="size-12 rounded-full" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=320&h=320&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
-              </div>
-              <div class="ms-4 md:ms-0">
-                <div class="text-base font-semibold text-white">Nicole Grazioso</div>
-                <div class="text-xs text-neutral-400">Director Payments & Risk | Airbnb</div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:gap-8">
+      {
+        testimonials.map((testimonial) => (
+          <div class="flex flex-col rounded-xl border border-neutral-700 bg-neutral-900 p-6 shadow-xs transition hover:shadow-md focus:shadow-md focus:outline-hidden">
+            <blockquote class="grow">
+              <p class="text-lg text-neutral-200 italic">"{testimonial.quote}"</p>
+            </blockquote>
+            <div class="mt-6 flex items-center space-x-4">
+              <img class="size-16 rounded-full object-cover md:size-20" src={testimonial.image} alt={testimonial.name} />
+              <div>
+                <p class="font-semibold text-green-400">{testimonial.name}</p>
+                <p class="text-sm text-neutral-400">
+                  {testimonial.position} - {testimonial.company}
+                </p>
               </div>
             </div>
-          </footer>
-        </blockquote>
-        <!-- End Blockquote -->
-      </div>
-      <!-- End Col -->
-
-      <div class="mb-24 hidden md:mb-0 md:block">
-        <img class="rounded-xl" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
-      </div>
-      <!-- End Col -->
+          </div>
+        ))
+      }
     </div>
-    <!-- End Grid -->
-    <!-- Grid -->
-    <div class="py-3 md:grid md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
-      <!-- End Col -->
-
-      <div class="mb-24 hidden md:mb-0 md:block">
-        <img class="rounded-xl" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
-      </div>
-      <!-- End Col -->
-      <div>
-        <!-- Blockquote -->
-        <blockquote>
-          <p class="text-xl font-medium text-white md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">To say that switching to Preline has been life-changing is an understatement. My business has tripled since then.</p>
-
-          <footer class="mt-6">
-            <div class="flex items-center">
-              <div class="shrink-0 md:hidden">
-                <img class="size-12 rounded-full" src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=320&h=320&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar" />
-              </div>
-              <div class="ms-4 md:ms-0">
-                <div class="text-base font-semibold text-white">Nicole Grazioso</div>
-                <div class="text-xs text-neutral-400">Director Payments & Risk | Airbnb</div>
-              </div>
-            </div>
-          </footer>
-        </blockquote>
-        <!-- End Blockquote -->
-      </div>
-    </div>
-    <!-- End Grid -->
   </div>
 </div>
 
