@@ -8,22 +8,22 @@ import cloudflare from "@astrojs/cloudflare";
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-  site: "http://localhost:4321",
+  site: "https://limo.com",
   compressHTML: !isDev,
 
   i18n: {
-      locales: ["tr", "en"],
-      defaultLocale: "tr",
-      routing: {
-          redirectToDefaultLocale: false,
-          prefixDefaultLocale: true,
-      },
+    locales: ["tr", "en"],
+    defaultLocale: "tr",
+    routing: {
+      redirectToDefaultLocale: false,
+      prefixDefaultLocale: true,
+    },
   },
 
   integrations: [sitemap(), icon()],
 
   vite: {
-      plugins: [tailwindcss()],
+    plugins: [tailwindcss()],
   },
 
   adapter: cloudflare(),

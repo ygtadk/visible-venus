@@ -2,18 +2,18 @@
 import "../assets/css/global.css";
 import BaseHead from "../components/base-head.astro";
 
-const { title, description, lang, bodyClass } = Astro.props;
+const { title, description, lang, bodyClass, robots } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang || "tr"}>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} robots={robots} />
   </head>
 
   <body class={"font-inter bg-neutral-800" + (bodyClass ? ` ${bodyClass}` : "")}>
     <div class="pointer-events-none fixed inset-0 z-100 mix-blend-overlay" style="background-image: url('/texture.png'); background-repeat: repeat;"></div>
-    
+
     <div class="relative z-10">
       <slot />
     </div>

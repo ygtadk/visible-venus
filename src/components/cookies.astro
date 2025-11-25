@@ -7,9 +7,9 @@ const translatePath = useTranslatedPath(lang);
 ---
 
 <!-- Cookies Component -->
-<div id="cookies-simple" class="fixed end-0 bottom-0 z-60 mx-auto w-full p-6 sm:max-w-xl">
+<div id="cookies-simple" class="fixed end-0 bottom-0 z-60 mx-auto hidden w-full p-6 sm:max-w-xl">
   <!-- Card -->
-  <div class="rounded-xl border border-neutral-600 bg-neutral-800/30 backdrop-blur-md p-4 shadow-2xs">
+  <div class="rounded-xl border border-neutral-600 bg-neutral-800/30 p-4 shadow-2xs backdrop-blur-md">
     <div class="flex gap-x-5">
       <svg class="hidden w-20 shrink-0 sm:block" width="72" height="63" viewBox="0 0 72 63" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.5174 56.1528C16.2903 57.6825 16.929 61.4559 14.8118 60.9459C13.5013 60.5381 11.4445 57.6213 12.493 56.1528C12.661 55.8468 13.2189 55.2757 14.106 55.4389" stroke="currentColor" class="stroke-neutral-200" stroke-width="2" stroke-linecap="round"></path>
@@ -75,7 +75,7 @@ const translatePath = useTranslatedPath(lang);
           {t("cookies.text")}
         </p>
         <div class="mt-5 inline-flex gap-x-2">
-          <button data-hs-remove-element="#cookies-simple" type="button" class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-green-400 px-3 py-2 text-sm font-medium text-black transition duration-300 hover:bg-green-600 focus:bg-green-600 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("cookies.b2")}</button>
+          <button type="button" class="js-cookie-accept inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-green-400 px-3 py-2 text-sm font-medium text-black transition duration-300 hover:bg-green-600 focus:bg-green-600 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("cookies.b2")}</button>
 
           <a href={translatePath("/privacy#cookies")} class="inline-flex items-center rounded-lg border border-transparent bg-neutral-400 px-4 py-2.5 text-sm font-medium text-black transition duration-300 hover:bg-green-600">{t("cookies.b1")}</a>
         </div>
@@ -86,9 +86,18 @@ const translatePath = useTranslatedPath(lang);
 </div>
 
 <script is:inline>
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.querySelectorAll(".hs-overlay").forEach((el) => HSOverlay.open(el));
+  document.addEventListener("DOMContentLoaded", () => {
+    const cookieBanner = document.getElementById("cookies-simple");
+    const acceptBtn = cookieBanner?.querySelector(".js-cookie-accept");
+
+    // Check if user has already accepted cookies
+    if (!localStorage.getItem("cookieConsent")) {
+      cookieBanner?.classList.remove("hidden");
+    }
+
+    acceptBtn?.addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "true");
+      cookieBanner?.classList.add("hidden");
     });
   });
 </script>
