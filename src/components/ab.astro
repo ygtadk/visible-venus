@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { status } = Astro.props;
+---
+
+<!-- Announcement Banner Component -->
+{status === "on" && (
+  <div id="ab-full-width-with-dismiss-button-on-blue-bg" class="mx-auto max-w-7xl py-4">
+    <div class="rounded-lg bg-green-400 bg-[url('../ab-abstract.svg')] bg-cover bg-center bg-no-repeat p-4 text-center">
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <p class="inline-block font-bold text-white">
+          {t("announcement_banner.discount_offer")}
+      </p>
+      <!-- Close Button -->
+      <div class="ms-auto ps-3">
+        <button type="button" class="inline-flex rounded-lg p-1.5 text-white/80 hover:bg-white/10 focus:bg-white/10 focus:outline-hidden" data-hs-remove-element="#ab-full-width-with-dismiss-button-on-blue-bg">
+          <span class="sr-only">Dismiss</span>
+          <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+)}
+<!-- End Announcement Banner Component -->

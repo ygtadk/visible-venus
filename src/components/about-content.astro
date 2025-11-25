@@ -1,0 +1,80 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Icon } from "astro-icon/components";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const values = [
+  {
+    title: t("about.values.innovation"),
+    icon: "solar:lightbulb-bolt-linear",
+  },
+  {
+    title: t("about.values.customer_focus"),
+    icon: "solar:user-hand-up-linear",
+  },
+  {
+    title: t("about.values.quality"),
+    icon: "solar:verified-check-linear",
+  },
+  {
+    title: t("about.values.integrity"),
+    icon: "solar:shield-star-linear",
+  },
+  {
+    title: t("about.values.teamwork"),
+    icon: "solar:users-group-two-rounded-line-duotone",
+  },
+];
+---
+
+<section class="via-neutral-800from-neutral-800 bg-gradient-to-b from-neutral-800 from-0% via-75% to-neutral-900 to-100% py-24">
+  <div class="mx-auto max-w-7xl px-4 xl:px-0">
+    <!-- Header -->
+    <div class="mx-auto mb-16 max-w-7xl text-center lg:mb-24">
+      <h1 class="mb-6 text-4xl font-bold text-white md:text-5xl">
+        {t("about.title")}
+      </h1>
+      <p class="text-xl text-neutral-400">
+        {t("about.subtitle")}
+      </p>
+      <div class="space-y-4 py-8 text-lg text-white">
+        {(t("about.description") as unknown as string[]).map((desc) => <p>{desc}</p>)}
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="mb-24 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
+      <div class="rounded-2xl border border-neutral-700/50 bg-neutral-800/50 p-8">
+        <h2 class="mb-4 text-2xl font-bold text-green-400">{t("about.mission.title")}</h2>
+        <p class="text-lg leading-relaxed text-neutral-300">
+          {t("about.mission.text")}
+        </p>
+      </div>
+      <div class="rounded-2xl border border-neutral-700/50 bg-neutral-800/50 p-8">
+        <h2 class="mb-4 text-2xl font-bold text-green-400">{t("about.vision.title")}</h2>
+        <p class="text-lg leading-relaxed text-neutral-300">
+          {t("about.vision.text")}
+        </p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div>
+      <h2 class="mb-12 text-center text-3xl font-bold text-white">{t("about.values.title")}</h2>
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-5">
+        {
+          values.map((value) => (
+            <div class="group flex flex-col items-center rounded-xl border border-neutral-700/30 bg-neutral-800/30 p-6 text-center transition-colors duration-300 last:col-span-2 hover:border-green-400/50 lg:last:col-span-1">
+              <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-neutral-700 text-green-400 transition-colors duration-300 group-hover:bg-green-400 group-hover:text-neutral-900">
+                <Icon name={value.icon} size={32} />
+              </div>
+              <h3 class="text-lg font-semibold text-white">{value.title}</h3>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import ContactComp from "../../components/contact.astro";
+
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={`${t("contact.title")} | ${t("site.shortname")}`} description={t("site.description")} bodyClass="overflow-x-hidden mx-auto bg-neutral-900">
+  <Header />
+  <main id="content" class="via-neutral-800from-neutral-800 bg-gradient-to-b from-neutral-800 from-0% via-75% to-neutral-900 to-100%">
+    <ContactComp />
+  </main>
+  <Footer />
+</BaseLayout>

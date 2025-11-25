@@ -1,53 +1,57 @@
 ---
-import { siteThemes } from "../data/siteprops";
-import {
-  getLangFromUrl,
-  useTranslations,
-  useTranslatedPath,
-} from "../i18n/utils";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
-const { title, description } = Astro.props;
-const SiteProps = {
-  themeColor: siteThemes.default.themeColor,
-};
+const { title, description, image = "/hero.svg", robots } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.site);
+
+// Hreflang Logic
+const currentPath = Astro.url.pathname;
+let pathWithoutLocale = currentPath.replace(new RegExp(`^/${lang}`), "") || "/";
+if (!pathWithoutLocale.startsWith("/")) pathWithoutLocale = "/" + pathWithoutLocale;
+
+const trUrl = new URL(`/tr${pathWithoutLocale === "/" ? "/" : pathWithoutLocale}`, Astro.site);
+const enUrl = new URL(`/en${pathWithoutLocale === "/" ? "/" : pathWithoutLocale}`, Astro.site);
 ---
 
 <meta charset="utf-8" />
-<meta
-  name="robots"
-  content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-/>
-<link rel="canonical" href="https://limo.com/" />
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1 shrink-to-fit=no"
-/>
-<title>{title || t("site.name")}</title>
+<meta name="robots" content={robots || "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>{title ? `${title} | ${t("site.name")}` : t("site.name")}</title>
 <meta name="description" content={description || t("site.description")} />
 <meta name="generator" content={Astro.generator} />
 
-<meta
-  property="og:title"
-  content="Limo Bilişim ve Teknoloji Hizmetleri | Hızlı ve güvenilir çözümler."
-/>
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content={title ? `${title} | ${t("site.name")}` : t("site.name")} />
+<meta property="og:description" content={description || t("site.description")} />
 <meta property="og:site_name" content={t("site.name")} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://limo.com/" />
-<meta property="og:image" content="" />
-<meta property="og:image:alt" content="" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:image:alt" content={t("site.name")} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title ? `${title} | ${t("site.name")}` : t("site.name")} />
+<meta name="twitter:description" content={description || t("site.description")} />
+<meta name="twitter:image" content={socialImageURL} />
+
+<!-- Alternate Languages -->
+<link rel="alternate" hreflang="tr" href={trUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
 
 <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
 
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<meta name="theme-color" content={SiteProps.themeColor} />
+<meta name="theme-color" content="#05df72" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />

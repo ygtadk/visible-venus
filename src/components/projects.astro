@@ -1,0 +1,79 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  {
+    id: 1,
+    titleKey: "projects.p1.title",
+    descKey: "projects.p1.desc",
+    tagKey: "projects.p1.tag",
+    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+  },
+  {
+    id: 2,
+    titleKey: "projects.p2.title",
+    descKey: "projects.p2.desc",
+    tagKey: "projects.p2.tag",
+    image: "https://images.unsplash.com/photo-1661956602139-ec64991b8b16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+  },
+  {
+    id: 3,
+    titleKey: "projects.p3.title",
+    descKey: "projects.p3.desc",
+    tagKey: "projects.p3.tag",
+    image: "https://images.unsplash.com/photo-1661956601050-dd1f63686329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+  },
+  {
+    id: 4,
+    titleKey: "projects.p4.title",
+    descKey: "projects.p4.desc",
+    tagKey: "projects.p4.tag",
+    image: "https://images.unsplash.com/photo-1661956602820-e2e14642f36e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+  },
+];
+---
+
+<!-- Projects Component -->
+<div id="projects" class="w-full bg-gradient-to-b from-neutral-900 from-0% via-neutral-800 via-50% to-neutral-900 to-100%">
+  <div class="mx-auto max-w-7xl py-10 lg:py-14">
+    <!-- Title -->
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <h2 class="mb-6 text-center text-3xl font-bold tracking-widest text-green-400 uppercase">
+        {t("projects.title")}
+      </h2>
+      <p class="mt-1 text-gray-600 dark:text-neutral-400">
+        {t("projects.subtitle")}
+      </p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:gap-8">
+      {
+        projects.map((project) => (
+          <a class="group flex flex-col rounded-xl border shadow-xs transition hover:shadow-md focus:shadow-md focus:outline-hidden border-neutral-700 bg-neutral-900" href="#">
+            <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-t-xl">
+              <img class="w-full rounded-t-xl object-cover transition-transform duration-500 group-hover:scale-105" src={project.image} alt={t(project.titleKey as any)} />
+            </div>
+            <div class="p-4 md:p-5">
+              <p class="mt-2 text-xs tracking-wide text-gray-500 uppercase dark:text-neutral-500">{t(project.tagKey as any)}</p>
+              <h3 class="mt-2 text-lg font-medium text-neutral-300 group-hover:text-white">{t(project.titleKey as any)}</h3>
+              <p class="mt-2 text-neutral-400">{t(project.descKey as any)}</p>
+              <div class="mt-4 flex items-center gap-x-1 text-sm font-semibold decoration-2 hover:underline focus:underline focus:outline-hidden text-green-400 hover:text-green-600">
+                {t("projects.view_project")}
+                <svg class="size-4 shrink-0 transition ease-in-out group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <!-- End Grid -->
+  </div>
+</div>
+<!-- End Projects Component -->

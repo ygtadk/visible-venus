@@ -1,0 +1,245 @@
+---
+import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const contactItems = {
+  address: {
+    icon: "solar:point-on-map-bold",
+    title: t("contact.address.title"),
+    street: t("contact.address.street"),
+    city: t("contact.address.city"),
+    state: t("contact.address.state"),
+    zip: t("contact.address.zip"),
+  },
+  email: {
+    icon: "solar:mailbox-bold",
+    title: t("contact.email.title"),
+    address: t("contact.email.address"),
+  },
+  hiring: {
+    icon: "solar:case-minimalistic-bold",
+    title: t("contact.hiring.title"),
+    description: t("contact.hiring.description"),
+    link_text: t("contact.hiring.link_text"),
+  },
+  telephone: {
+    icon: "solar:call-chat-bold",
+    title: t("contact.telephone.title"),
+    number: t("contact.telephone.number"),
+  },
+};
+
+const successTitle = lang === "tr" ? "Başarılı!" : "Success!";
+const successMessage = lang === "tr" ? "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız." : "Your message has been sent successfully. We will get back to you as soon as possible.";
+const closeButton = lang === "tr" ? "Kapat" : "Close";
+---
+
+<!-- Contact Component -->
+<div id="contact" class="bg-neutral-900">
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:py-20 xl:px-0">
+    <!-- Title -->
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-green-400">
+        {t("contact.title")}
+      </h2>
+      <p class="mt-1 text-neutral-400">
+        {t("contact.subtitle")}
+      </p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 gap-x-10 md:grid-cols-3 lg:gap-x-16">
+      <div class="col-span-2 mb-10 rounded-2xl border-2 border-neutral-800 p-4 pb-10 md:order-2 md:mb-0 md:pb-0">
+        <form id="contact-form">
+          <div class="grid gap-4 lg:gap-6">
+            <!-- Grid -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6">
+              <div>
+                <label for="hs-firstname-contacts-1" class="mb-2 block text-sm font-medium text-white">{t("contact.form.firstname")}</label>
+                <input type="text" name="hs-firstname-contacts-1" id="hs-firstname-contacts-1" class="block w-full rounded-lg border-neutral-700 bg-neutral-900 px-4 py-2.5 text-neutral-400 placeholder-neutral-500 focus:border-green-400 focus:ring-neutral-600 disabled:pointer-events-none disabled:opacity-50 sm:py-3 sm:text-sm" />
+              </div>
+
+              <div>
+                <label for="hs-lastname-contacts-1" class="mb-2 block text-sm font-medium text-white">{t("contact.form.lastname")}</label>
+                <input type="text" name="hs-lastname-contacts-1" id="hs-lastname-contacts-1" class="block w-full rounded-lg border-neutral-700 bg-neutral-900 px-4 py-2.5 text-neutral-400 placeholder-neutral-500 focus:border-green-400 focus:ring-neutral-600 disabled:pointer-events-none disabled:opacity-50 sm:py-3 sm:text-sm" />
+              </div>
+            </div>
+            <!-- End Grid -->
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6">
+              <div>
+                <label for="hs-email-contacts-1" class="mb-2 block text-sm font-medium text-white">{t("contact.form.email")}</label>
+                <input type="email" name="hs-email-contacts-1" id="hs-email-contacts-1" autocomplete="email" class="block w-full rounded-lg border-neutral-700 bg-neutral-900 px-4 py-2.5 text-neutral-400 placeholder-neutral-500 focus:border-green-400 focus:ring-neutral-600 disabled:pointer-events-none disabled:opacity-50 sm:py-3 sm:text-sm" />
+              </div>
+
+              <div>
+                <label for="hs-phone-number-1" class="mb-2 block text-sm font-medium text-white">{t("contact.form.phone")}</label>
+                <input type="text" name="hs-phone-number-1" id="hs-phone-number-1" class="block w-full rounded-lg border-neutral-700 bg-neutral-900 px-4 py-2.5 text-neutral-400 placeholder-neutral-500 focus:border-green-400 focus:ring-neutral-600 disabled:pointer-events-none disabled:opacity-50 sm:py-3 sm:text-sm" />
+              </div>
+            </div>
+            <!-- End Grid -->
+
+            <div>
+              <label for="hs-about-contacts-1" class="mb-2 block text-sm font-medium text-white">{t("contact.form.message")}</label>
+              <textarea id="hs-about-contacts-1" name="hs-about-contacts-1" rows="4" class="block w-full rounded-lg border-neutral-700 bg-neutral-900 px-4 py-2.5 text-neutral-400 placeholder-neutral-500 focus:border-green-400 focus:ring-neutral-600 disabled:pointer-events-none disabled:opacity-50 sm:py-3 sm:text-sm"></textarea>
+            </div>
+          </div>
+          <!-- End Grid -->
+
+          <div class="mt-6 grid">
+            <button type="submit" class="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-green-400 px-4 py-3 text-sm font-medium text-black hover:bg-green-600 focus:bg-green-600 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50">{t("contact.form.send")}</button>
+          </div>
+
+          <div class="my-4 text-center">
+            <p class="text-sm text-neutral-500">{t("contact.form.response_time")}</p>
+          </div>
+        </form>
+      </div>
+      <!-- End Col -->
+
+      <div class="space-y-14">
+        {
+          Object.values(contactItems).map((item: any) => (
+            <div class="flex items-start gap-4">
+              <div class="flex items-center justify-center rounded-lg bg-green-400 text-neutral-900">
+                <Icon name={item.icon} class="m-1 h-7 w-7" />
+              </div>
+              <div>
+                <h3 class="mb-2 text-lg font-semibold text-white">{item.title}</h3>
+                {item.street && (
+                  <p class="text-neutral-400">
+                    {item.street}
+                    <br />
+                    {item.city}, {item.state} {item.zip}
+                  </p>
+                )}
+                {item.address && (
+                  <p class="text-neutral-400">
+                    <a href={`mailto:${item.address}`} class="hover:underline">
+                      {item.address}
+                    </a>
+                  </p>
+                )}
+                {item.number && (
+                  <p class="text-neutral-400">
+                    <a href={`tel:${item.number}`} class="hover:underline">
+                      {item.number}
+                    </a>
+                  </p>
+                )}
+                {item.description && (
+                  <>
+                    <p class="mb-2 text-neutral-400">{item.description}</p>
+                    <a href={translatePath("/careers")} class="text-green-400 hover:underline">
+                      {item.link_text}
+                    </a>
+                  </>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Grid -->
+  </div>
+</div>
+<!-- End Contact Component -->
+
+<!-- Success Modal -->
+<div id="contact-success-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+  <div class="relative w-full max-w-md scale-95 transform overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all duration-300">
+    <div class="text-center">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-900/30">
+        <Icon name="solar:check-circle-bold" class="h-8 w-8 text-green-400" />
+      </div>
+      <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+        {successTitle}
+      </h3>
+      <div class="mt-2">
+        <p class="text-sm text-neutral-400">
+          {successMessage}
+        </p>
+      </div>
+    </div>
+    <div class="mt-6 flex justify-center">
+      <button type="button" id="close-modal-btn" class="inline-flex justify-center rounded-lg border border-transparent bg-green-400 px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-green-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
+        {closeButton}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const modal = document.getElementById("contact-success-modal");
+  const closeBtn = document.getElementById("close-modal-btn");
+
+  if (form && modal && closeBtn) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Simulate form submission
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : "";
+
+      if (submitBtn) {
+        submitBtn.textContent = "...";
+        (submitBtn as HTMLButtonElement).disabled = true;
+      }
+
+      setTimeout(() => {
+        // Reset button
+        if (submitBtn) {
+          submitBtn.textContent = originalText;
+          (submitBtn as HTMLButtonElement).disabled = false;
+        }
+
+        // Show modal
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        // Small delay to allow display:block to apply before opacity transition
+        requestAnimationFrame(() => {
+          modal.classList.remove("opacity-0");
+          const modalContent = modal.querySelector("div");
+          if (modalContent) {
+            modalContent.classList.remove("scale-95");
+            modalContent.classList.add("scale-100");
+          }
+        });
+
+        form.reset();
+      }, 1000);
+    });
+
+    const closeModal = () => {
+      modal.classList.add("opacity-0");
+      const modalContent = modal.querySelector("div");
+      if (modalContent) {
+        modalContent.classList.remove("scale-100");
+        modalContent.classList.add("scale-95");
+      }
+
+      setTimeout(() => {
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }, 300); // Match transition duration
+    };
+
+    closeBtn.addEventListener("click", closeModal);
+
+    // Close on click outside
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+</script>

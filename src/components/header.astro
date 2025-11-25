@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const headerLinks = [
+  { href: translatePath("/#services"), label: t("nav.services") },
+  { href: translatePath("/about/"), label: t("nav.about") },
+];
+---
+
+<!-- Header Component -->
+<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap before:absolute before:inset-0 before:mx-2 before:rounded-[26px] before:bg-neutral-800/30 before:backdrop-blur-md md:flex-nowrap md:justify-start lg:before:mx-auto before:max-w-7xl">
+  <nav class="relative mx-auto flex w-full max-w-7xl basis-full flex-wrap items-center justify-between py-2 ps-5 pe-5 md:flex-nowrap md:py-0">
+    <div class="flex items-center">
+      <!-- Logo -->
+      <a class="text-green-400 flex gap-4 rounded-md text-xl font-semibold focus:opacity-80 focus:outline-hidden transition duration-500 hover:text-white" href={translatePath("/")} aria-label="Limo" aria-current="page">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 14 14"><!-- Icon from Flex free icons by Streamline - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M11.734 10.995V9.308c.57.024.855-.029 1.198-.267c.307-.213.409-.614.308-.974c-.982-3.513-2.507-7.062-6.904-7.062v11.99h3.398a2 2 0 0 0 2-2M9.867 6.51v.161M2.922 4.069c.551 0 .862-.31.862-.862s-.31-.863-.862-.863s-.862.31-.862.863s.31.862.862.862m-1.46 4.024c.551 0 .862-.31.862-.862s-.31-.862-.862-.862S.6 6.68.6 7.231s.31.862.862.862m.689 4.024c.552 0 .862-.31.862-.862s-.31-.862-.862-.862s-.862.31-.862.862s.31.862.862.862m1.633-8.911h2.552m-1.54 2.178h1.54m-1.661 5.871v-2H3.579m-.565 2h3.322M2.324 7.23h4.012"/></svg>
+        <span class="font-comfortaa h-auto w-28 text-3xl font-bold lowercase">{t("site.shortname")}</span>
+      </a>
+      <!-- End Logo -->
+    </div>
+
+    <!-- Button Group -->
+    <div class="flex items-center gap-x-3 md:order-3">
+      <div class="md:ps-3">
+        <a class="group inline-flex items-center gap-x-2 rounded-full bg-green-400 transition duration-300 hover:bg-green-600 px-3 py-2 text-sm font-medium text-nowrap text-neutral-800 focus:outline-hidden" href={translatePath("/contact/")}>
+          {t("nav.get_in_touch")}
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button type="button" class="hs-collapse-toggle flex size-9 items-center justify-center rounded-full bg-neutral-800 text-sm font-semibold text-white disabled:pointer-events-none disabled:opacity-50" id="hs-navbar-floating-dark-collapse" aria-expanded="false" aria-controls="hs-navbar-floating-dark" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-floating-dark">
+          <svg class="hs-collapse-open:hidden size-4 shrink-0 text-green-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" x2="21" y1="6" y2="6"></line>
+            <line x1="3" x2="21" y1="12" y2="12"></line>
+            <line x1="3" x2="21" y1="18" y2="18"></line>
+          </svg>
+          <svg class="hs-collapse-open:block hidden size-4 shrink-0 text-green-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- End Button Group -->
+
+    <!-- Collapse -->
+    <!-- TODO: Menünün düzeni değiştirilecek -->
+    <div id="hs-navbar-floating-dark" class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block" aria-labelledby="hs-navbar-floating-dark-collapse">
+      <div class="flex flex-col gap-y-3 py-2 md:flex-row md:items-center md:justify-end md:py-0 md:ps-7">
+        {
+          headerLinks.map((link) => (
+            <a class="ps-px pe-3 text-sm text-white transition duration-300 hover:text-green-400 focus:text-neutral-300 focus:outline-hidden sm:px-3 md:py-4" href={link.href}>
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <!-- End Collapse -->
+  </nav>
+</header>
+<!-- End Header Component -->

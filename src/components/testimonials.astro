@@ -1,0 +1,62 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const testimonials = [
+  {
+    quote: t("testimonials.testimonial1"),
+    name: "İlhan Bey",
+    position: "CEO",
+    company: "Köseler Pasaport Pizza",
+    image: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+  },
+  {
+    quote: t("testimonials.testimonial2"),
+    name: "Gökhan Alkan",
+    position: "CEO",
+    company: "FLA`ER OG",
+    image: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+  },
+];
+---
+
+<!-- Testimonials Component -->
+<div class="w-full bg-gradient-to-b from-neutral-900 from-0% via-neutral-800 via-50% to-neutral-900 to-100%">
+  <div class="mx-auto max-w-7xl py-10 lg:py-20 xl:px-0">
+    <!-- Title -->
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <h2 class="text-2xl font-bold  md:text-4xl md:leading-tight text-green-400">
+        {t("testimonials.title")}
+      </h2>
+      <p class="mt-1 text-neutral-400">
+        {t("testimonials.subtitle")}
+      </p>
+    </div>
+    <!-- End Title -->
+    <!-- Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:gap-8">
+      {
+        testimonials.map((testimonial) => (
+          <div class="flex flex-col rounded-xl border border-neutral-700 bg-neutral-900 p-6 shadow-xs transition hover:shadow-md focus:shadow-md focus:outline-hidden">
+            <blockquote class="grow">
+              <p class="text-lg text-neutral-200 italic">"{testimonial.quote}"</p>
+            </blockquote>
+            <div class="mt-6 flex items-center space-x-4">
+              <img class="size-16 rounded-full object-cover md:size-20" src={testimonial.image} alt={testimonial.name} />
+              <div>
+                <p class="font-semibold text-green-400">{testimonial.name}</p>
+                <p class="text-sm text-neutral-400">
+                  {testimonial.position} - {testimonial.company}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<!-- End Testimonials Component -->

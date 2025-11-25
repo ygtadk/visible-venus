@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/base-layout.astro";
 ---
 
-<BaseLayout>
+<BaseLayout robots="noindex, follow">
   <!-- Yükleme Animasyonu -->
   <!-- <div class="loader">
     <div class="inner one"></div>
@@ -83,12 +83,12 @@ import BaseLayout from "../layouts/base-layout.astro";
   <script type="text/javascript">
     var userLang = navigator.language || navigator.userLanguage;
     console.log("Kullanıcı dili: " + userLang);
-      if (userLang.startsWith("tr")) {
-        console.log("Türkçe versiyona yönlendiriliyor");
-        window.location.href = "/tr/";
-      } else {
-        console.log("Redirecting to English version");
-        window.location.href = "/en/";
-      }
+    if (userLang.startsWith("tr")) {
+      console.log("Türkçe versiyona yönlendiriliyor");
+      window.location.href = "/tr/";
+    } else {
+      console.log("Redirecting to English version");
+      window.location.href = "/en/";
+    }
   </script>
 </BaseLayout>

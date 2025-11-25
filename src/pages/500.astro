@@ -2,94 +2,90 @@
 import BaseLayout from "../layouts/base-layout.astro";
 ---
 
-<BaseLayout bodyClass="bg-light-gradient dark:bg-dark-gradient">
+<BaseLayout bodyClass="bg-light-gradient dark:bg-dark-gradient" robots="noindex, nofollow">
   <div class="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center p-6 text-center">
-    <h1 class="font-source-code-pro text-pop-up-top text-9xl font-extrabold text-neutral-800 dark:text-white">
-      500
-    </h1>
-
-    <h2 id="contentBlock1" class="mt-6 text-2xl font-bold text-neutral-800 dark:text-white"></h2>
-
-    <p id="contentBlock2" class="mt-4 text-pretty text-neutral-800 dark:text-white"></p>
-
-    <div class="mt-6 space-y-2">
-      <a id="contentBlock3" href="/" class="block w-full rounded-lg bg-neutral-800 px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-neutral-600 dark:bg-white dark:text-neutral-800 dark:hover:bg-neutral-300"></a>
-    </div>
+    <h1 class="font-source-code-pro text-pop-up-top text-9xl font-extrabold text-neutral-800 dark:text-white">500</h1>
+    500
   </div>
-  <script type="text/javascript">
-    const contectBlock1 = document.getElementById("contentBlock1");
-    const contectBlock2 = document.getElementById("contentBlock2");
-    const contectBlock3 = document.getElementById("contentBlock3");
-    var userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith("tr")) {
-      contentBlock1.innerHTML = "<span>Hmm...</span>";
-      contentBlock2.innerHTML =
-        "<span>Sanırım sunucumuz çöktü, eminim ilgilenen birileri vardır. Lütfen daha sonra ziyaret ediniz.</span>";
-      contectBlock3.innerHTML = "<span>Tekrar Dene</span>";
-    } else {
-      contentBlock1.innerHTML = "<span>Hmm...</span>";
-      contentBlock2.innerHTML =
-        "<span>I think our server is down. I'm sure someone is looking into it. Please check back later.</span>";
-      contectBlock3.innerHTML = "<span>Try Again</span>";
-    }
-  </script>
-  <style>
-    .text-pop-up-top {
-      -webkit-animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
-      animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    }
-    @-webkit-keyframes text-pop-up-top {
-      0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-        text-shadow: none;
-      }
-      100% {
-        -webkit-transform: translateY(-50px);
-        transform: translateY(-50px);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-        text-shadow:
-          0 1px 0 #cccccc,
-          0 2px 0 #cccccc,
-          0 3px 0 #cccccc,
-          0 4px 0 #cccccc,
-          0 5px 0 #cccccc,
-          0 6px 0 #cccccc,
-          0 7px 0 #cccccc,
-          0 8px 0 #cccccc,
-          0 9px 0 #cccccc,
-          0 50px 30px rgba(0, 0, 0, 0.3);
-      }
-    }
-    @keyframes text-pop-up-top {
-      0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-        text-shadow: none;
-      }
-      100% {
-        -webkit-transform: translateY(-50px);
-        transform: translateY(-50px);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-        text-shadow:
-          0 1px 0 #cccccc,
-          0 2px 0 #cccccc,
-          0 3px 0 #cccccc,
-          0 4px 0 #cccccc,
-          0 5px 0 #cccccc,
-          0 6px 0 #cccccc,
-          0 7px 0 #cccccc,
-          0 8px 0 #cccccc,
-          0 9px 0 #cccccc,
-          0 50px 30px rgba(0, 0, 0, 0.3);
-      }
-    }
-  </style>
+
+  <h2 id="contentBlock1" class="mt-6 text-2xl font-bold text-neutral-800 dark:text-white"></h2>
+
+  <p id="contentBlock2" class="mt-4 text-pretty text-neutral-800 dark:text-white"></p>
+
+  <div class="mt-6 space-y-2">
+    <a id="contentBlock3" href="/" class="block w-full rounded-lg bg-neutral-800 px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-neutral-600 dark:bg-white dark:text-neutral-800 dark:hover:bg-neutral-300"></a>
+  </div>
 </BaseLayout>
+<script type="text/javascript">
+  const contectBlock1 = document.getElementById("contentBlock1");
+  const contectBlock2 = document.getElementById("contentBlock2");
+  const contectBlock3 = document.getElementById("contentBlock3");
+  var userLang = navigator.language || navigator.userLanguage;
+  if (userLang.startsWith("tr")) {
+    contentBlock1.innerHTML = "<span>Hmm...</span>";
+    contentBlock2.innerHTML = "<span>Sanırım sunucumuz çöktü, eminim ilgilenen birileri vardır. Lütfen daha sonra ziyaret ediniz.</span>";
+    contectBlock3.innerHTML = "<span>Tekrar Dene</span>";
+  } else {
+    contentBlock1.innerHTML = "<span>Hmm...</span>";
+    contentBlock2.innerHTML = "<span>I think our server is down. I'm sure someone is looking into it. Please check back later.</span>";
+    contectBlock3.innerHTML = "<span>Try Again</span>";
+  }
+</script>
+<style>
+  .text-pop-up-top {
+    -webkit-animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  @-webkit-keyframes text-pop-up-top {
+    0% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      text-shadow: none;
+    }
+    100% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      text-shadow:
+        0 1px 0 #cccccc,
+        0 2px 0 #cccccc,
+        0 3px 0 #cccccc,
+        0 4px 0 #cccccc,
+        0 5px 0 #cccccc,
+        0 6px 0 #cccccc,
+        0 7px 0 #cccccc,
+        0 8px 0 #cccccc,
+        0 9px 0 #cccccc,
+        0 50px 30px rgba(0, 0, 0, 0.3);
+    }
+  }
+  @keyframes text-pop-up-top {
+    0% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      text-shadow: none;
+    }
+    100% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      text-shadow:
+        0 1px 0 #cccccc,
+        0 2px 0 #cccccc,
+        0 3px 0 #cccccc,
+        0 4px 0 #cccccc,
+        0 5px 0 #cccccc,
+        0 6px 0 #cccccc,
+        0 7px 0 #cccccc,
+        0 8px 0 #cccccc,
+        0 9px 0 #cccccc,
+        0 50px 30px rgba(0, 0, 0, 0.3);
+    }
+  }
+</style>
