@@ -32,10 +32,6 @@ const contactItems = {
     number: t("contact.telephone.number"),
   },
 };
-
-const successTitle = lang === "tr" ? "Başarılı!" : "Success!";
-const successMessage = lang === "tr" ? "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız." : "Your message has been sent successfully. We will get back to you as soon as possible.";
-const closeButton = lang === "tr" ? "Kapat" : "Close";
 ---
 
 <!-- Contact Component -->
@@ -43,7 +39,7 @@ const closeButton = lang === "tr" ? "Kapat" : "Close";
   <div class="mx-auto max-w-7xl px-4 py-10 lg:py-20 xl:px-0">
     <!-- Title -->
     <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
-      <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-green-400">
+      <h2 class="text-2xl font-bold text-green-400 md:text-4xl md:leading-tight">
         {t("contact.title")}
       </h2>
       <p class="mt-1 text-neutral-400">
@@ -153,93 +149,28 @@ const closeButton = lang === "tr" ? "Kapat" : "Close";
 </div>
 <!-- End Contact Component -->
 
-<!-- Success Modal -->
-<div id="contact-success-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 opacity-0 backdrop-blur-sm transition-opacity duration-300">
-  <div class="relative w-full max-w-md scale-95 transform overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all duration-300">
-    <div class="text-center">
-      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-900/30">
-        <Icon name="solar:check-circle-bold" class="h-8 w-8 text-green-400" />
-      </div>
-      <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
-        {successTitle}
-      </h3>
-      <div class="mt-2">
-        <p class="text-sm text-neutral-400">
-          {successMessage}
-        </p>
-      </div>
-    </div>
-    <div class="mt-6 flex justify-center">
-      <button type="button" id="close-modal-btn" class="inline-flex justify-center rounded-lg border border-transparent bg-green-400 px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-green-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
-        {closeButton}
-      </button>
-    </div>
-  </div>
-</div>
-
 <script>
   const form = document.getElementById("contact-form") as HTMLFormElement;
-  const modal = document.getElementById("contact-success-modal");
-  const closeBtn = document.getElementById("close-modal-btn");
 
-  if (form && modal && closeBtn) {
+  if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      // Simulate form submission
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.textContent : "";
+      const formData = new FormData(form);
+      const firstname = formData.get("hs-firstname-contacts-1") as string;
+      const lastname = formData.get("hs-lastname-contacts-1") as string;
+      const email = formData.get("hs-email-contacts-1") as string;
+      const phone = formData.get("hs-phone-number-1") as string;
+      const message = formData.get("hs-about-contacts-1") as string;
 
-      if (submitBtn) {
-        submitBtn.textContent = "...";
-        (submitBtn as HTMLButtonElement).disabled = true;
-      }
+      const subject = `İletişim Formu: ${firstname} ${lastname}`;
+      const body = `Ad Soyad: ${firstname} ${lastname}\nE-posta: ${email}\nTelefon: ${phone}\n\nMesaj:\n${message}`;
 
-      setTimeout(() => {
-        // Reset button
-        if (submitBtn) {
-          submitBtn.textContent = originalText;
-          (submitBtn as HTMLButtonElement).disabled = false;
-        }
+      const mailtoLink = `mailto:info@limo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        // Show modal
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        // Small delay to allow display:block to apply before opacity transition
-        requestAnimationFrame(() => {
-          modal.classList.remove("opacity-0");
-          const modalContent = modal.querySelector("div");
-          if (modalContent) {
-            modalContent.classList.remove("scale-95");
-            modalContent.classList.add("scale-100");
-          }
-        });
+      window.location.href = mailtoLink;
 
-        form.reset();
-      }, 1000);
-    });
-
-    const closeModal = () => {
-      modal.classList.add("opacity-0");
-      const modalContent = modal.querySelector("div");
-      if (modalContent) {
-        modalContent.classList.remove("scale-100");
-        modalContent.classList.add("scale-95");
-      }
-
-      setTimeout(() => {
-        modal.classList.remove("flex");
-        modal.classList.add("hidden");
-      }, 300); // Match transition duration
-    };
-
-    closeBtn.addEventListener("click", closeModal);
-
-    // Close on click outside
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
+      form.reset();
     });
   }
 </script>
