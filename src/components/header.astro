@@ -7,6 +7,7 @@ const translatePath = useTranslatedPath(lang);
 const headerLinks = [
   { href: translatePath("/#services"), label: t("nav.services") },
   { href: translatePath("/about/"), label: t("nav.about") },
+  { href: translatePath("/pricing/"), label: t("nav.pricing") },
 ];
 ---
 
@@ -16,7 +17,7 @@ const headerLinks = [
     <div class="flex items-center">
       <!-- Logo -->
       <a class="text-green-400 flex gap-4 rounded-md text-xl font-semibold focus:opacity-80 focus:outline-hidden transition duration-500 hover:text-white" href={translatePath("/")} aria-label="Limo" aria-current="page">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 14 14"><!-- Icon from Flex free icons by Streamline - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M11.734 10.995V9.308c.57.024.855-.029 1.198-.267c.307-.213.409-.614.308-.974c-.982-3.513-2.507-7.062-6.904-7.062v11.99h3.398a2 2 0 0 0 2-2M9.867 6.51v.161M2.922 4.069c.551 0 .862-.31.862-.862s-.31-.863-.862-.863s-.862.31-.862.863s.31.862.862.862m-1.46 4.024c.551 0 .862-.31.862-.862s-.31-.862-.862-.862S.6 6.68.6 7.231s.31.862.862.862m.689 4.024c.552 0 .862-.31.862-.862s-.31-.862-.862-.862s-.862.31-.862.862s.31.862.862.862m1.633-8.911h2.552m-1.54 2.178h1.54m-1.661 5.871v-2H3.579m-.565 2h3.322M2.324 7.23h4.012"/></svg>
+        <img src="/icons/limo.svg" alt="Limo Logo" height="32" width="32"/>
         <span class="font-comfortaa h-auto w-28 text-3xl font-bold lowercase">{t("site.shortname")}</span>
       </a>
       <!-- End Logo -->

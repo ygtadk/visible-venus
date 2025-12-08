@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://limo.com/sitemap-index.xml
+Sitemap: https://limobilisim.com/sitemap-index.xml

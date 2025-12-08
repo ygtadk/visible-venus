@@ -44,7 +44,7 @@ const projects = [
       <h2 class="mb-6 text-center text-3xl font-bold tracking-widest text-green-400 uppercase">
         {t("projects.title")}
       </h2>
-      <p class="mt-1 text-gray-600 dark:text-neutral-400">
+      <p class="mt-1 text-neutral-400">
         {t("projects.subtitle")}
       </p>
     </div>
@@ -59,7 +59,7 @@ const projects = [
               <img class="w-full rounded-t-xl object-cover transition-transform duration-500 group-hover:scale-105" src={project.image} alt={t(project.titleKey as any)} />
             </div>
             <div class="p-4 md:p-5">
-              <p class="mt-2 text-xs tracking-wide text-gray-500 uppercase dark:text-neutral-500">{t(project.tagKey as any)}</p>
+              <p class="mt-2 text-xs tracking-wide uppercase text-neutral-500">{t(project.tagKey as any)}</p>
               <h3 class="mt-2 text-lg font-medium text-neutral-300 group-hover:text-white">{t(project.titleKey as any)}</h3>
               <p class="mt-2 text-neutral-400">{t(project.descKey as any)}</p>
               <div class="mt-4 flex items-center gap-x-1 text-sm font-semibold decoration-2 hover:underline focus:underline focus:outline-hidden text-green-400 hover:text-green-600">

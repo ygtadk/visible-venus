@@ -8,7 +8,7 @@ import cloudflare from "@astrojs/cloudflare";
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-  site: "https://limo.com",
+  site: "https://limobilisim.com",
   compressHTML: !isDev,
 
   i18n: {
