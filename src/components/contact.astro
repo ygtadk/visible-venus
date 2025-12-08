@@ -29,7 +29,7 @@ const contactItems = {
   telephone: {
     icon: "solar:call-chat-bold",
     title: t("contact.telephone.title"),
-    number: t("contact.telephone.number"),
+    number: ["+90 551 556 8440", "+90 544 242 4369"],
   },
 };
 ---
@@ -122,13 +122,22 @@ const contactItems = {
                     </a>
                   </p>
                 )}
-                {item.number && (
-                  <p class="text-neutral-400">
-                    <a href={`tel:${item.number}`} class="hover:underline">
-                      {item.number}
-                    </a>
-                  </p>
-                )}
+                {item.number &&
+                  (Array.isArray(item.number) ? (
+                    item.number.map((num: string) => (
+                      <p class="text-neutral-400">
+                        <a href={`tel:${num}`} class="hover:underline">
+                          {num}
+                        </a>
+                      </p>
+                    ))
+                  ) : (
+                    <p class="text-neutral-400">
+                      <a href={`tel:${item.number}`} class="hover:underline">
+                        {item.number}
+                      </a>
+                    </p>
+                  ))}
                 {item.description && (
                   <>
                     <p class="mb-2 text-neutral-400">{item.description}</p>

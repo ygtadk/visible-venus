@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import Header from "../../components/header.astro";
+import PricingContent from "../../components/pricing-content.astro";
+import Contacts from "../../components/contact.astro";
+import Footer from "../../components/footer.astro";
+
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<BaseLayout lang={lang} title={t("site.shortname")} description={t("site.description")} bodyClass="overflow-x-hidden mx-auto ">
+  <Header />
+  <main id="content">
+    <PricingContent />
+    <Contacts />
+  </main>
+  <Footer />
+</BaseLayout>
